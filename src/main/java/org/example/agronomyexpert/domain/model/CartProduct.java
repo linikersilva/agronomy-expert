@@ -1,10 +1,10 @@
-package org.example.agronomyexpert.domain.entity;
+package org.example.agronomyexpert.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import lombok.*;
-import org.example.agronomyexpert.domain.entity.embedded.CartProductPk;
+import org.example.agronomyexpert.domain.model.embedded.CartProductPk;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

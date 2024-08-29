@@ -1,12 +1,12 @@
-package org.example.agronomyexpert.domain.entity.embedded;
+package org.example.agronomyexpert.domain.model.embedded;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.*;
-import org.example.agronomyexpert.domain.entity.Cart;
-import org.example.agronomyexpert.domain.entity.Product;
+import org.example.agronomyexpert.domain.model.Cart;
+import org.example.agronomyexpert.domain.model.Payment;
 
 @Embeddable
 @Getter
@@ -14,13 +14,13 @@ import org.example.agronomyexpert.domain.entity.Product;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CartProductPk {
+public class CartPaymentPk {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "carrinho_fk", nullable = false)
     private Cart cartId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "produto_fk", nullable = false)
-    private Product productId;
+    @JoinColumn(name = "pagamento_fk", nullable = false)
+    private Payment paymentId;
 }

@@ -1,4 +1,4 @@
-package org.example.agronomyexpert.domain.entity;
+package org.example.agronomyexpert.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;

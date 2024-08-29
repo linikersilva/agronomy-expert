@@ -1,19 +1,20 @@
-package org.example.agronomyexpert.domain.entity;
+package org.example.agronomyexpert.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.agronomyexpert.enums.EmployeeStatusEnum;
 import org.example.agronomyexpert.enums.GenderEnum;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity(name = "cliente")
+@Entity(name = "funcionario")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Client {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +26,14 @@ public class Client {
     @Column(name = "nome", nullable = false, length = 50)
     private String name;
 
-    @Column(name = "cpf_cnpj", nullable = false, unique = true, length = 14)
-    private String cpfCnpj;
+    @Column(name = "usuario", nullable = false, unique = true, length = 10)
+    private String username;
+
+    @Column(name = "senha_hash", nullable = false)
+    private String hashedPassword;
+
+    @Column(nullable = false, unique = true, length = 11)
+    private String cpf;
 
     @Column(name = "telefone", nullable = false, length = 9)
     private String phone;
@@ -61,4 +68,12 @@ public class Client {
 
     @Column(name = "data_de_nascimento", nullable = false)
     private LocalDate birthdate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cargo_fk", nullable = false)
+    private Role roleFk;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 7)
+    private EmployeeStatusEnum status;
 }

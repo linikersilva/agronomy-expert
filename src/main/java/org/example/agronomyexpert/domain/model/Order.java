@@ -1,17 +1,17 @@
-package org.example.agronomyexpert.domain.entity;
+package org.example.agronomyexpert.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Entity(name = "categoria")
+@Entity(name = "pedido")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Category {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,7 @@ public class Category {
     @Column(name = "data_de_criacao", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "nome", nullable = false, unique = true, length = 30)
-    private String name;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "carrinho_fk", nullable = false)
+    private Cart cartFk;
 }

@@ -69,7 +69,7 @@ public class Employee {
     @Column(name = "data_de_nascimento", nullable = false)
     private LocalDate birthdate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cargo_fk", nullable = false)
     private Role roleFk;
 

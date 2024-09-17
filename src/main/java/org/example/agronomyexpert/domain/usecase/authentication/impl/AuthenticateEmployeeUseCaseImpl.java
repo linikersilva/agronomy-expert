@@ -1,6 +1,6 @@
-package org.example.agronomyexpert.domain.usecase.impl;
+package org.example.agronomyexpert.domain.usecase.authentication.impl;
 
-import org.example.agronomyexpert.domain.usecase.AuthenticateEmployeeUseCase;
+import org.example.agronomyexpert.domain.usecase.authentication.AuthenticateEmployeeUseCase;
 import org.example.agronomyexpert.infrastructure.adapter.security.JwtTokenService;
 import org.example.agronomyexpert.infrastructure.adapter.security.UserDetailsImpl;
 import org.example.agronomyexpert.presentation.dto.request.LoginEmployeeDto;

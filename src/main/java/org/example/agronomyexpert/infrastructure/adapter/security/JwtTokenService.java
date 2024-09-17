@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import org.example.agronomyexpert.presentation.dto.response.RecoveryJwtTokenDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +48,7 @@ public class JwtTokenService {
         }
     }
 
-    public Date getExpiresAtFromToken(String token) {
+    private Date getExpiresAtFromToken(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secretKey);
             return JWT.require(algorithm)
@@ -58,6 +59,10 @@ public class JwtTokenService {
         } catch (JWTVerificationException exception){
             throw new JWTVerificationException("Token inválido ou expirado.");
         }
+    }
+
+    public RecoveryJwtTokenDto buildResponseDto(String token) {
+        return new RecoveryJwtTokenDto(token, getExpiresAtFromToken(token));
     }
 
     private Instant creationDate() {

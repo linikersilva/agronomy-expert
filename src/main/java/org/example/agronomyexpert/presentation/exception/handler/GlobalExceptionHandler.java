@@ -1,8 +1,9 @@
-package org.example.agronomyexpert.shared.exceptions;
+package org.example.agronomyexpert.presentation.exception.handler;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import org.example.agronomyexpert.presentation.exception.MissingTokenException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package org.example.agronomyexpert.config.security;
+package org.example.agronomyexpert.infrastructure.adapter.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

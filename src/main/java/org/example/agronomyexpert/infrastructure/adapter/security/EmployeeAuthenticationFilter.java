@@ -1,4 +1,4 @@
-package org.example.agronomyexpert.config.security;
+package org.example.agronomyexpert.infrastructure.adapter.security;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.FilterChain;
@@ -6,8 +6,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.agronomyexpert.domain.model.Employee;
-import org.example.agronomyexpert.domain.repository.EmployeeRepository;
-import org.example.agronomyexpert.shared.exceptions.MissingTokenException;
+import org.example.agronomyexpert.infrastructure.persistence.EmployeeRepository;
+import org.example.agronomyexpert.presentation.exception.MissingTokenException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

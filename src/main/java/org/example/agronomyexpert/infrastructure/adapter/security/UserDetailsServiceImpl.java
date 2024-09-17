@@ -1,7 +1,7 @@
-package org.example.agronomyexpert.config.security;
+package org.example.agronomyexpert.infrastructure.adapter.security;
 
 import org.example.agronomyexpert.domain.model.Employee;
-import org.example.agronomyexpert.domain.repository.EmployeeRepository;
+import org.example.agronomyexpert.infrastructure.persistence.EmployeeRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

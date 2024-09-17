@@ -1,4 +1,4 @@
-package org.example.agronomyexpert.config.security;
+package org.example.agronomyexpert.infrastructure.adapter.security;
 
 import org.example.agronomyexpert.domain.model.Employee;
 import org.springframework.security.core.GrantedAuthority;

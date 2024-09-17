@@ -2,7 +2,7 @@ package org.example.agronomyexpert.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.agronomyexpert.shared.enums.StockOperationTypeEnum;
+import org.example.agronomyexpert.domain.model.enums.StockOperationTypeEnum;
 
 import java.time.LocalDateTime;
 

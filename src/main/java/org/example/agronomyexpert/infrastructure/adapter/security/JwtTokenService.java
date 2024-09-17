@@ -1,4 +1,4 @@
-package org.example.agronomyexpert.config.security;
+package org.example.agronomyexpert.infrastructure.adapter.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

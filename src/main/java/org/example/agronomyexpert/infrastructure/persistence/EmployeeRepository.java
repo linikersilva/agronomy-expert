@@ -1,4 +1,4 @@
-package org.example.agronomyexpert.domain.repository;
+package org.example.agronomyexpert.infrastructure.persistence;
 
 import org.example.agronomyexpert.domain.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;

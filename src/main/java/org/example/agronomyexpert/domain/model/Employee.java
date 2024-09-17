@@ -2,8 +2,8 @@ package org.example.agronomyexpert.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.agronomyexpert.shared.enums.EmployeeStatusEnum;
-import org.example.agronomyexpert.shared.enums.GenderEnum;
+import org.example.agronomyexpert.domain.model.enums.EmployeeStatusEnum;
+import org.example.agronomyexpert.domain.model.enums.GenderEnum;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

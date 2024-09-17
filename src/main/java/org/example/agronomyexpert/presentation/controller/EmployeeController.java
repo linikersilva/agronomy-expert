@@ -1,9 +1,9 @@
-package org.example.agronomyexpert.controller;
+package org.example.agronomyexpert.presentation.controller;
 
 import jakarta.validation.Valid;
-import org.example.agronomyexpert.controller.dto.LoginEmployeeDto;
-import org.example.agronomyexpert.controller.dto.RecoveryJwtTokenDto;
-import org.example.agronomyexpert.domain.service.EmployeeService;
+import org.example.agronomyexpert.presentation.dto.request.LoginEmployeeDto;
+import org.example.agronomyexpert.presentation.dto.response.RecoveryJwtTokenDto;
+import org.example.agronomyexpert.application.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

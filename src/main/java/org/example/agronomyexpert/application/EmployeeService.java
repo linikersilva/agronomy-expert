@@ -1,11 +1,11 @@
-package org.example.agronomyexpert.domain.service;
+package org.example.agronomyexpert.application;
 
-import org.example.agronomyexpert.config.security.JwtTokenService;
-import org.example.agronomyexpert.config.security.UserDetailsImpl;
-import org.example.agronomyexpert.config.security.WebSecurityConfig;
-import org.example.agronomyexpert.controller.dto.LoginEmployeeDto;
-import org.example.agronomyexpert.controller.dto.RecoveryJwtTokenDto;
-import org.example.agronomyexpert.domain.repository.EmployeeRepository;
+import org.example.agronomyexpert.infrastructure.adapter.security.JwtTokenService;
+import org.example.agronomyexpert.infrastructure.adapter.security.UserDetailsImpl;
+import org.example.agronomyexpert.infrastructure.adapter.security.WebSecurityConfig;
+import org.example.agronomyexpert.presentation.dto.request.LoginEmployeeDto;
+import org.example.agronomyexpert.presentation.dto.response.RecoveryJwtTokenDto;
+import org.example.agronomyexpert.infrastructure.persistence.EmployeeRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

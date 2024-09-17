@@ -1,6 +1,6 @@
-package org.example.agronomyexpert.domain.service;
+package org.example.agronomyexpert.application;
 
-import org.example.agronomyexpert.domain.repository.RoleRepository;
+import org.example.agronomyexpert.infrastructure.persistence.RoleRepository;
 import org.springframework.stereotype.Service;
 
 @Service

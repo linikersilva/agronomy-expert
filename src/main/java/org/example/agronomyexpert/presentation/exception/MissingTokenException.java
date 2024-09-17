@@ -1,4 +1,4 @@
-package org.example.agronomyexpert.shared.exceptions;
+package org.example.agronomyexpert.presentation.exception;
 
 public class MissingTokenException extends RuntimeException {
 

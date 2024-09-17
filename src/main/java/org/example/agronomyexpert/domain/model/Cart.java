@@ -2,7 +2,7 @@ package org.example.agronomyexpert.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.agronomyexpert.shared.enums.CartStatusEnum;
+import org.example.agronomyexpert.domain.model.enums.CartStatusEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package org.example.agronomyexpert.controller.dto;
+package org.example.agronomyexpert.presentation.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

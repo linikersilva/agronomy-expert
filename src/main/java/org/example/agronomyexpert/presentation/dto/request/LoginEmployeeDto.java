@@ -1,4 +1,4 @@
-package org.example.agronomyexpert.controller.dto;
+package org.example.agronomyexpert.presentation.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 

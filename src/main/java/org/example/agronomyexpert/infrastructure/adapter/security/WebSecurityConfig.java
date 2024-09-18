@@ -29,7 +29,9 @@ public class WebSecurityConfig {
             "/employees/login"
     };
 
-    protected static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {};
+    protected static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
+            "/roles"
+    };
 
     protected static final String [] ENDPOINTS_WITH_ADMIN_ACCESS_LEVEL = {};
 

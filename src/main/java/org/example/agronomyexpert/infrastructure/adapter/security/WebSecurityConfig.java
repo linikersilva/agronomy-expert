@@ -30,7 +30,8 @@ public class WebSecurityConfig {
     };
 
     protected static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
-            "/roles"
+            "/roles",
+            "/roles/{roleId}"
     };
 
     protected static final String [] ENDPOINTS_WITH_ADMIN_ACCESS_LEVEL = {};

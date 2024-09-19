@@ -4,8 +4,11 @@ import jakarta.validation.Valid;
 import org.example.agronomyexpert.application.RoleService;
 import org.example.agronomyexpert.presentation.dto.request.CreateRoleDto;
 import org.example.agronomyexpert.presentation.dto.request.RoleResponseDto;
+import org.example.agronomyexpert.presentation.dto.request.UpdateRoleDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +34,13 @@ public class RoleController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(role.id()).toUri();
         return ResponseEntity.created(uri).body(role);
+    }
+
+    @PatchMapping("/{roleId}")
+    public ResponseEntity<RoleResponseDto> updateRole(@RequestBody @Valid UpdateRoleDto updateRoleDto,
+                                                      @PathVariable Integer roleId) {
+        RoleResponseDto role = roleService.updateRole(roleId, updateRoleDto);
+        return ResponseEntity.ok().body(role);
     }
 
 }

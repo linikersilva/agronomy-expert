@@ -1,5 +1,6 @@
 package org.example.agronomyexpert.infrastructure.adapter.security;
 
+import org.example.agronomyexpert.domain.model.enums.AccessLevelEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,12 +30,12 @@ public class WebSecurityConfig {
             "/employees/login"
     };
 
-    protected static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
+    protected static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {};
+
+    protected static final String [] ENDPOINTS_WITH_ADMIN_ACCESS_LEVEL = {
             "/roles",
             "/roles/{roleId}"
     };
-
-    protected static final String [] ENDPOINTS_WITH_ADMIN_ACCESS_LEVEL = {};
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -45,7 +46,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED).permitAll()
                         .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).authenticated()
-                        .requestMatchers(ENDPOINTS_WITH_ADMIN_ACCESS_LEVEL).hasRole("ADMINISTRATIVO")
+                        .requestMatchers(ENDPOINTS_WITH_ADMIN_ACCESS_LEVEL).hasAuthority(AccessLevelEnum.ADMINISTRATIVO.name())
                         .anyRequest().denyAll())
                 .addFilterBefore(employeeAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

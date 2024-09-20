@@ -16,15 +16,16 @@ public record CreateEmployeeDto(@NotBlank(message = "O atributo name não pode s
                                 @Size(min = 10, max = 10, message = "O tamanho do atributo username deve ser 10 caracteres")
                                 String username,
                                 @NotBlank(message = "O atributo password não pode ser nulo ou vazio")
+                                @Size(min = 8, max = 16, message = "O tamanho do atributo password deve ser entre 8 a 16 caracteres")
                                 String password,
                                 @NotBlank(message = "O atributo cpf não pode ser nulo ou vazio")
-                                @Size(max = 11, message = "O tamanho máximo do atributo cpf é 11 caracteres")
+                                @Size(min = 11, max = 11, message = "O tamanho do atributo cpf deve ser 11 caracteres")
                                 String cpf,
                                 @NotBlank(message = "O atributo phone não pode ser nulo ou vazio")
-                                @Size(max = 9, message = "O tamanho máximo do atributo phone é 9 caracteres")
+                                @Size(min = 9, max = 9, message = "O tamanho do atributo phone deve ser 9 caracteres")
                                 String phone,
                                 @NotBlank(message = "O atributo ddd não pode ser nulo ou vazio")
-                                @Size(max = 2, message = "O tamanho máximo do atributo ddd é 2 caracteres")
+                                @Size(min = 2, max = 2, message = "O tamanho do atributo ddd deve ser 2 caracteres")
                                 String ddd,
                                 @NotBlank(message = "O atributo email não pode ser nulo ou vazio")
                                 @Size(max = 50, message = "O tamanho máximo do atributo email é 2 caracteres")
@@ -40,13 +41,13 @@ public record CreateEmployeeDto(@NotBlank(message = "O atributo name não pode s
                                 @Size(max = 30, message = "O tamanho máximo do atributo city é 30 caracteres")
                                 String city,
                                 @NotBlank(message = "O atributo uf não pode ser nulo ou vazio")
-                                @Size(max = 2, message = "O tamanho máximo do atributo uf é 2 caracteres")
+                                @Size(min = 2, max = 2, message = "O tamanho do atributo uf deve ser 2 caracteres")
                                 String uf,
                                 @NotBlank(message = "O atributo number não pode ser nulo ou vazio")
                                 @Size(max = 4, message = "O tamanho máximo do atributo number é 30 caracteres")
                                 String number,
                                 @NotBlank(message = "O atributo cep não pode ser nulo ou vazio")
-                                @Size(max = 8, message = "O tamanho máximo do atributo cep é 30 caracteres")
+                                @Size(min = 8, max = 8, message = "O tamanho do atributo cep deve ser 30 caracteres")
                                 String cep,
                                 @NotNull(message = "O atributo gender não pode ser nulo")
                                 GenderEnum gender,

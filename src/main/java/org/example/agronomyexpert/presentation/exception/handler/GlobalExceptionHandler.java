@@ -3,10 +3,9 @@ package org.example.agronomyexpert.presentation.exception.handler;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import org.example.agronomyexpert.domain.exception.EmployeeNotFoundException;
 import org.example.agronomyexpert.domain.exception.RoleNotFoundException;
 import org.example.agronomyexpert.presentation.exception.MissingTokenException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -23,8 +22,6 @@ import java.util.Set;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
-    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public ResponseEntity<ErrorResponse> handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException ex) {
@@ -55,6 +52,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(RoleNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleRoleNotFoundException(RoleNotFoundException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(errorResponse);
+    }
+
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleEmployeeNotFoundException(EmployeeNotFoundException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(errorResponse);

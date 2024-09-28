@@ -6,12 +6,15 @@ import org.example.agronomyexpert.presentation.dto.request.CreateClientDto;
 import org.example.agronomyexpert.presentation.dto.request.UpdateClientDto;
 import org.example.agronomyexpert.presentation.dto.response.ClientResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -26,6 +29,13 @@ public class ClientController {
     @Autowired
     public ClientController(ClientService clientService) {
         this.clientService = clientService;
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<ClientResponseDto>> findAll(@RequestParam(defaultValue = "0") Integer page,
+                                                             @RequestParam(defaultValue = "10") Integer size) {
+        Page<ClientResponseDto> response = clientService.findAll(page, size);
+        return ResponseEntity.ok().body(response);
     }
 
     @PostMapping

@@ -39,7 +39,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientResponseDto> createclient(@RequestBody @Valid CreateClientDto createClientDto) {
+    public ResponseEntity<ClientResponseDto> createClient(@RequestBody @Valid CreateClientDto createClientDto) {
         ClientResponseDto client = clientService.createClient(createClientDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(client.id()).toUri();

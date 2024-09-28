@@ -32,7 +32,9 @@ public class WebSecurityConfig {
 
     protected static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
             "/clients",
-            "/clients/{clientId}"
+            "/clients/{clientId}",
+            "/categories",
+            "/categories/{categoryId}"
     };
 
     protected static final String [] ENDPOINTS_WITH_ADMIN_ACCESS_LEVEL = {

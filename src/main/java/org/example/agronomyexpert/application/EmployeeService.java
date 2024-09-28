@@ -57,9 +57,9 @@ public class EmployeeService {
 
     @Transactional
     public EmployeeResponseDto updateEmployee(Integer id, UpdateEmployeeDto updateEmployeeDto) {
-        Employee updateEmployee = updateEmployeeUseCase.updateEmployee(id, updateEmployeeDto);
+        Employee updatedEmployee = updateEmployeeUseCase.updateEmployee(id, updateEmployeeDto);
 
-        return buildEmployeeResponseDto(updateEmployee);
+        return buildEmployeeResponseDto(updatedEmployee);
     }
 
     private EmployeeResponseDto buildEmployeeResponseDto(Employee employee) {

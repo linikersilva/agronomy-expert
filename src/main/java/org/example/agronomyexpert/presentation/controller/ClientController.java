@@ -3,9 +3,12 @@ package org.example.agronomyexpert.presentation.controller;
 import jakarta.validation.Valid;
 import org.example.agronomyexpert.application.ClientService;
 import org.example.agronomyexpert.presentation.dto.request.CreateClientDto;
+import org.example.agronomyexpert.presentation.dto.request.UpdateClientDto;
 import org.example.agronomyexpert.presentation.dto.response.ClientResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +34,12 @@ public class ClientController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(client.id()).toUri();
         return ResponseEntity.created(uri).body(client);
+    }
+
+    @PatchMapping("/{clientId}")
+    public ResponseEntity<ClientResponseDto> updateClient(@RequestBody @Valid UpdateClientDto updateClientDto,
+                                                          @PathVariable Integer clientId) {
+        ClientResponseDto client = clientService.updateClient(clientId, updateClientDto);
+        return ResponseEntity.ok().body(client);
     }
 }

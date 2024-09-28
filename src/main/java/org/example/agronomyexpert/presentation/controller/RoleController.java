@@ -3,7 +3,7 @@ package org.example.agronomyexpert.presentation.controller;
 import jakarta.validation.Valid;
 import org.example.agronomyexpert.application.RoleService;
 import org.example.agronomyexpert.presentation.dto.request.CreateRoleDto;
-import org.example.agronomyexpert.presentation.dto.request.RoleResponseDto;
+import org.example.agronomyexpert.presentation.dto.response.RoleResponseDto;
 import org.example.agronomyexpert.presentation.dto.request.UpdateRoleDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

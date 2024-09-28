@@ -2,7 +2,7 @@ package org.example.agronomyexpert.presentation.controller;
 
 import jakarta.validation.Valid;
 import org.example.agronomyexpert.presentation.dto.request.CreateEmployeeDto;
-import org.example.agronomyexpert.presentation.dto.request.EmployeeResponseDto;
+import org.example.agronomyexpert.presentation.dto.response.EmployeeResponseDto;
 import org.example.agronomyexpert.presentation.dto.request.LoginEmployeeDto;
 import org.example.agronomyexpert.presentation.dto.request.UpdateEmployeeDto;
 import org.example.agronomyexpert.presentation.dto.response.RecoveryJwtTokenDto;

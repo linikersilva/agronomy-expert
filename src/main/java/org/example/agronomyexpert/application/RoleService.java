@@ -5,7 +5,7 @@ import org.example.agronomyexpert.domain.usecase.role.CreateRoleUseCase;
 import org.example.agronomyexpert.domain.usecase.role.ListAllRolesUseCase;
 import org.example.agronomyexpert.domain.usecase.role.UpdateRoleUseCase;
 import org.example.agronomyexpert.presentation.dto.request.CreateRoleDto;
-import org.example.agronomyexpert.presentation.dto.request.RoleResponseDto;
+import org.example.agronomyexpert.presentation.dto.response.RoleResponseDto;
 import org.example.agronomyexpert.presentation.dto.request.UpdateRoleDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

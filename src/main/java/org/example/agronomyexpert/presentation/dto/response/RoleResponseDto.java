@@ -1,4 +1,4 @@
-package org.example.agronomyexpert.presentation.dto.request;
+package org.example.agronomyexpert.presentation.dto.response;
 
 import org.example.agronomyexpert.domain.model.enums.AccessLevelEnum;
 

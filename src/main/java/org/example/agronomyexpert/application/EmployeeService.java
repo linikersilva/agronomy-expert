@@ -6,7 +6,7 @@ import org.example.agronomyexpert.domain.usecase.employee.CreateEmployeeUseCase;
 import org.example.agronomyexpert.domain.usecase.employee.ListAllEmployeesUseCase;
 import org.example.agronomyexpert.domain.usecase.employee.UpdateEmployeeUseCase;
 import org.example.agronomyexpert.presentation.dto.request.CreateEmployeeDto;
-import org.example.agronomyexpert.presentation.dto.request.EmployeeResponseDto;
+import org.example.agronomyexpert.presentation.dto.response.EmployeeResponseDto;
 import org.example.agronomyexpert.presentation.dto.request.LoginEmployeeDto;
 import org.example.agronomyexpert.presentation.dto.request.UpdateEmployeeDto;
 import org.example.agronomyexpert.presentation.dto.response.RecoveryJwtTokenDto;

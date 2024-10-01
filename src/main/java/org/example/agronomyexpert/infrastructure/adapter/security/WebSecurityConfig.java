@@ -37,7 +37,8 @@ public class WebSecurityConfig {
             "/categories/{categoryId}",
             "/products",
             "/products/{productId}",
-            "carts"
+            "/carts",
+            "/carts/{cartId}"
     };
 
     protected static final String [] ENDPOINTS_WITH_ADMIN_ACCESS_LEVEL = {

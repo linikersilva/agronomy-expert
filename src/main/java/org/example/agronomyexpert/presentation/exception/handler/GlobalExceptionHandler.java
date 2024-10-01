@@ -3,6 +3,7 @@ package org.example.agronomyexpert.presentation.exception.handler;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import org.example.agronomyexpert.domain.exception.CartNotFoundException;
 import org.example.agronomyexpert.domain.exception.CategoryNotFoundException;
 import org.example.agronomyexpert.domain.exception.ClientNotFoundException;
 import org.example.agronomyexpert.domain.exception.EmployeeNotFoundException;
@@ -83,6 +84,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleProductNotFoundException(ProductNotFoundException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(errorResponse);
+    }
+
+    @ExceptionHandler(CartNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleCartNotFoundException(CartNotFoundException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(errorResponse);

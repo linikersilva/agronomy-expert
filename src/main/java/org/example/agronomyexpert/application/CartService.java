@@ -2,7 +2,7 @@ package org.example.agronomyexpert.application;
 
 import org.example.agronomyexpert.domain.model.Cart;
 import org.example.agronomyexpert.domain.usecase.cart.CreateCartUseCase;
-import org.example.agronomyexpert.infrastructure.persistence.ClientRepository;
+import org.example.agronomyexpert.domain.usecase.cart.DeleteCartUseCase;
 import org.example.agronomyexpert.presentation.dto.request.CreateCartDto;
 import org.example.agronomyexpert.presentation.dto.response.CartResponseDto;
 import org.springframework.stereotype.Service;
@@ -14,12 +14,12 @@ import java.time.format.DateTimeFormatter;
 public class CartService {
 
     private final CreateCartUseCase createCartUseCase;
-    private final ClientRepository clientRepository;
+    private final DeleteCartUseCase deleteCartUseCase;
 
     public CartService(CreateCartUseCase createCartUseCase,
-                       ClientRepository clientRepository) {
+                       DeleteCartUseCase deleteCartUseCase) {
         this.createCartUseCase = createCartUseCase;
-        this.clientRepository = clientRepository;
+        this.deleteCartUseCase = deleteCartUseCase;
     }
 
     @Transactional
@@ -27,6 +27,13 @@ public class CartService {
         Cart savedCart = createCartUseCase.createCart(requesterUsername, createCartDto);
 
         return buildCartResponseDto(savedCart);
+    }
+
+    @Transactional
+    public CartResponseDto deleteCart(String requesterUsername, Integer cartId) {
+        Cart cartWithUpdatedStatus = deleteCartUseCase.deleteCart(requesterUsername, cartId);
+
+        return buildCartResponseDto(cartWithUpdatedStatus);
     }
 
     private CartResponseDto buildCartResponseDto(Cart cart) {

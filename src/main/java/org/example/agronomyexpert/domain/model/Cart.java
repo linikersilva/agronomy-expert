@@ -1,7 +1,17 @@
 package org.example.agronomyexpert.domain.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
 import org.example.agronomyexpert.domain.model.enums.CartStatusEnum;
 
 import java.math.BigDecimal;
@@ -10,10 +20,30 @@ import java.time.LocalDateTime;
 @Entity(name = "carrinho")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Cart {
+
+    public Cart() {
+    }
+
+    public static Cart create(final Client client, final Employee seller) {
+        return new Cart(client, seller);
+    }
+
+    public Cart(final Client client, final Employee seller) {
+        if (client == null) {
+            throw new IllegalArgumentException("O cliente do carrinho não pode ser nulo");
+        }
+        this.clientFk = client;
+
+        if (seller == null) {
+            throw new IllegalArgumentException("O vendedor do carrinho não pode ser nulo");
+        }
+        this.sellerFk = seller;
+
+        this.createdAt = LocalDateTime.now();
+        this.totalValue = BigDecimal.ZERO;
+        this.status = CartStatusEnum.ATIVO;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +58,7 @@ public class Cart {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vendedor_fk", nullable = false)
-    private Employee employeeFk;
+    private Employee sellerFk;
 
     @Column(name = "valor_total_do_carrinho", nullable = false)
     private BigDecimal totalValue;

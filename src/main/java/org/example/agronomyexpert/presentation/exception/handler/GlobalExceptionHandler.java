@@ -6,6 +6,7 @@ import jakarta.validation.ConstraintViolationException;
 import org.example.agronomyexpert.domain.exception.CategoryNotFoundException;
 import org.example.agronomyexpert.domain.exception.ClientNotFoundException;
 import org.example.agronomyexpert.domain.exception.EmployeeNotFoundException;
+import org.example.agronomyexpert.domain.exception.ProductNotFoundException;
 import org.example.agronomyexpert.domain.exception.RoleNotFoundException;
 import org.example.agronomyexpert.presentation.exception.MissingTokenException;
 import org.springframework.http.HttpStatus;
@@ -75,6 +76,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(CategoryNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleCategoryNotFoundException(CategoryNotFoundException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(errorResponse);
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleProductNotFoundException(ProductNotFoundException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(errorResponse);

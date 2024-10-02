@@ -1,5 +1,6 @@
 package org.example.agronomyexpert.domain.usecase.product.impl;
 
+import org.example.agronomyexpert.domain.exception.CategoryNotFoundException;
 import org.example.agronomyexpert.domain.exception.ProductNotFoundException;
 import org.example.agronomyexpert.domain.model.Category;
 import org.example.agronomyexpert.domain.model.Product;
@@ -24,7 +25,7 @@ public class CreateProductUseCaseImpl implements CreateProductUseCase {
     @Override
     public Product createProduct(CreateProductDto createProductDto) {
         Category category = categoryRepository.findById(createProductDto.categoryId())
-                .orElseThrow(() -> new ProductNotFoundException("Não foi encontrada nenhuma categoria com o id informado"));
+                .orElseThrow(() -> new CategoryNotFoundException("Não foi encontrada nenhuma categoria com o id informado"));
 
         Product product = Product.create(createProductDto, category);
         return productRepository.save(product);

@@ -37,15 +37,15 @@ public class WebSecurityConfig {
             "/categories/{categoryId}",
             "/products",
             "/products/{productId}",
-            "/carts",
-            "/carts/{cartId}"
+            "/carts"
     };
 
     protected static final String [] ENDPOINTS_WITH_ADMIN_ACCESS_LEVEL = {
             "/roles",
             "/roles/{roleId}",
             "/employees",
-            "/employees/{employeeId}"
+            "/employees/{employeeId}",
+            "/carts/{cartId}"
     };
 
     @Bean

@@ -4,6 +4,7 @@ import org.example.agronomyexpert.domain.model.Cart;
 import org.example.agronomyexpert.domain.usecase.cart.CreateCartUseCase;
 import org.example.agronomyexpert.domain.usecase.cart.DeleteCartUseCase;
 import org.example.agronomyexpert.domain.usecase.cart.ListAllCartsUseCase;
+import org.example.agronomyexpert.domain.usecase.cart.ResumeCartUseCase;
 import org.example.agronomyexpert.presentation.dto.request.CreateCartDto;
 import org.example.agronomyexpert.presentation.dto.response.CartResponseDto;
 import org.springframework.data.domain.Page;
@@ -20,13 +21,23 @@ public class CartService {
     private final CreateCartUseCase createCartUseCase;
     private final DeleteCartUseCase deleteCartUseCase;
     private final ListAllCartsUseCase listAllCartsUseCase;
+    private final ResumeCartUseCase resumeCartUseCase;
 
     public CartService(CreateCartUseCase createCartUseCase,
                        DeleteCartUseCase deleteCartUseCase,
-                       ListAllCartsUseCase listAllCartsUseCase) {
+                       ListAllCartsUseCase listAllCartsUseCase,
+                       ResumeCartUseCase resumeCartUseCase) {
         this.createCartUseCase = createCartUseCase;
         this.deleteCartUseCase = deleteCartUseCase;
         this.listAllCartsUseCase = listAllCartsUseCase;
+        this.resumeCartUseCase = resumeCartUseCase;
+    }
+
+    @Transactional(readOnly = true)
+    public CartResponseDto resumeCart(String requesterUsername, Integer cartId) {
+        Cart cart = resumeCartUseCase.resumeCart(requesterUsername, cartId);
+
+        return buildCartResponseDto(cart);
     }
 
     @Transactional(readOnly = true)

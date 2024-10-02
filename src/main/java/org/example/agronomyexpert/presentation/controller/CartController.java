@@ -31,6 +31,13 @@ public class CartController {
         this.cartService = cartService;
     }
 
+    @GetMapping("/resume-cart/{cartId}")
+    public ResponseEntity<CartResponseDto> resumeCart(@AuthenticationPrincipal String userDetails,
+                                                      @PathVariable Integer cartId) {
+        CartResponseDto cart = cartService.resumeCart(userDetails, cartId);
+        return ResponseEntity.ok().body(cart);
+    }
+
     @GetMapping
     public ResponseEntity<Page<CartResponseDto>> findAll(@AuthenticationPrincipal String userDetails,
                                                          @RequestParam(defaultValue = "0") Integer page,

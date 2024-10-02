@@ -3,8 +3,12 @@ package org.example.agronomyexpert.application;
 import org.example.agronomyexpert.domain.model.Cart;
 import org.example.agronomyexpert.domain.usecase.cart.CreateCartUseCase;
 import org.example.agronomyexpert.domain.usecase.cart.DeleteCartUseCase;
+import org.example.agronomyexpert.domain.usecase.cart.ListAllCartsUseCase;
 import org.example.agronomyexpert.presentation.dto.request.CreateCartDto;
 import org.example.agronomyexpert.presentation.dto.response.CartResponseDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +19,22 @@ public class CartService {
 
     private final CreateCartUseCase createCartUseCase;
     private final DeleteCartUseCase deleteCartUseCase;
+    private final ListAllCartsUseCase listAllCartsUseCase;
 
     public CartService(CreateCartUseCase createCartUseCase,
-                       DeleteCartUseCase deleteCartUseCase) {
+                       DeleteCartUseCase deleteCartUseCase,
+                       ListAllCartsUseCase listAllCartsUseCase) {
         this.createCartUseCase = createCartUseCase;
         this.deleteCartUseCase = deleteCartUseCase;
+        this.listAllCartsUseCase = listAllCartsUseCase;
+    }
+
+    @Transactional(readOnly = true)
+    public Page<CartResponseDto> findAll(String requesterUsername, Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        return listAllCartsUseCase.listAll(requesterUsername, pageable)
+                .map(this::buildCartResponseDto);
     }
 
     @Transactional

@@ -63,12 +63,12 @@ public class DeleteCartUseCaseImpl implements DeleteCartUseCase {
 
             stockRepository.save(Stock.create(product, cartProduct.getQuantity(), StockOperationTypeEnum.ENTRADA));
 
-            productRepository.updateProductQuantity(cartProduct.getQuantity(), productId);
+            productRepository.increaseProductQuantity(cartProduct.getQuantity(), productId);
         });
 
-        cartRepository.cancelCart(cartId);
-
         cart.setStatus(CartStatusEnum.CANCELADO);
+        cartRepository.save(cart);
+
         return cart;
     }
 }

@@ -13,6 +13,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = "UPDATE produto "
                  + "SET quantidade_em_estoque_atual = quantidade_em_estoque_atual + :quantityToBeAdded "
                  + "WHERE id = :productId", nativeQuery = true)
-    void updateProductQuantity(Integer quantityToBeAdded,
-                               Integer productId);
+    void increaseProductQuantity(Integer quantityToBeAdded,
+                                 Integer productId);
+
+    @Modifying
+    @Query(value = "UPDATE produto "
+                 + "SET quantidade_em_estoque_atual = quantidade_em_estoque_atual - :quantityToBeRemoved "
+                 + "WHERE id = :productId", nativeQuery = true)
+    void decreaseProductQuantity(Integer quantityToBeRemoved,
+                                 Integer productId);
 }

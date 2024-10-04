@@ -8,6 +8,7 @@ import org.example.agronomyexpert.domain.exception.CategoryNotFoundException;
 import org.example.agronomyexpert.domain.exception.ClientNotFoundException;
 import org.example.agronomyexpert.domain.exception.EmployeeNotFoundException;
 import org.example.agronomyexpert.domain.exception.ProductNotFoundException;
+import org.example.agronomyexpert.domain.exception.ProductNotFoundInCartException;
 import org.example.agronomyexpert.domain.exception.RoleNotFoundException;
 import org.example.agronomyexpert.presentation.exception.MissingTokenException;
 import org.springframework.http.HttpStatus;
@@ -91,6 +92,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(CartNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleCartNotFoundException(CartNotFoundException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(errorResponse);
+    }
+
+    @ExceptionHandler(ProductNotFoundInCartException.class)
+    public ResponseEntity<ErrorResponse> handleProductNotFoundInCartException(ProductNotFoundInCartException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(errorResponse);
